@@ -1,0 +1,303 @@
+:root{
+--h100:100%;
+--headgray:#EAEAEA;
+--h-bar:70px;
+--footgray:#F3EEEB;
+}
+
+
+/*RESET**********************************************************/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ul, ol,menu{
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: currentColor;
+}
+body{
+    font-family:"Lato", sans-serif;
+}
+
+
+/*LAYOUT**********************************************************/
+#app{
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(77,146,136,1) 182.5px , rgba(219,219,211,1) 182.5px);
+}
+.container{
+    height:var(--h100);
+}
+
+
+/*APP__BODY********************************************************/
+.app__body{
+    flex-grow: 1;
+}
+.app__body .headbar {
+    justify-content: space-between;
+}
+.app__body .card__body >p{
+    font-size: 14px;
+    color: #6D7376;
+}
+.body__text-area{
+    background-image: url(./img/mine.jpg);
+    flex-grow: 1;
+    padding:70px 10%;
+}
+.send{
+    background-color:#def8c0;
+    align-self: flex-end;
+}
+.recive{
+    background-color: white;
+}
+.cta-box{
+    justify-content: space-between;
+    font-size: 10px;
+    color:#B8BABC;
+    padding-right: 10px;
+    padding-bottom: 2px;
+}
+.send + .send, .recive + .recive{
+    margin-top:10px;
+}
+.send + .recive, .recive + .send{
+    margin-top:25px;
+}
+.box__text{
+    flex-grow: 1;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.body__send-area{
+    background-color:var(--footgray) ;
+    height: var(--h-bar);
+    align-items: center;
+    padding: 0 15px;
+    gap: 15px;
+    
+}
+.body__send-area i{
+    font-size: 28px;
+    color:#6D7376;
+}
+.body__send-area #txt{
+    border: none;
+    outline: none;
+    resize: none;
+    flex-grow: 1;
+}
+
+
+/*COMPONENTS********************************************************/
+.sidebar{
+    display:none;
+}
+.headbar{
+    display: flex;
+    background-color: var(--headgray);
+    height: var(--h-bar);
+    align-items: center;
+}
+.card{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+.card__head img{
+    width: 56px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.cta-link{
+    display: none;
+    font-size: 26px;
+    color: #B1B1B1;
+}
+.box{
+    border-radius: 18px;
+    padding-top: 18px;
+    padding-left: 22px;
+    max-width: 250px;
+}
+
+
+/*UTILITIES********************************************************/
+.h100{
+    height: var(--h100);
+}
+.flex{
+    display: flex;
+}
+.column{
+    flex-direction: column;
+}
+.scroll{
+    overflow-y:auto;
+}
+.bold{
+    font-weight: 700;
+}
+
+
+/***************MEDIA QUERIES*************************************/
+
+/***************MD - TABLET**************************************/
+@media screen and (min-width: 768px){
+
+
+/***COMPONENTS******************************************************/
+    .sidebar__notification{
+        display: none;
+    }
+    .sidebar__search{
+        display: none;
+    }
+    .box{
+        max-width: 300px;
+    }
+
+/***ASIDE*********************************************************/
+    .sidebar{
+        display:flex;
+        width: 82px;
+        flex-shrink: 0;
+        border-right: 2px solid #DCDCDC;
+    }
+    .sidebar .headbar{
+        justify-content: center;
+    }
+    .sidebar__chats{
+        flex-grow: 1;
+        background-color: white;
+    }
+    .card{
+        border-bottom: 1px solid #F5F5F5;
+    }
+    .card__body, .contacts > p{
+        display: none;
+    }
+
+
+/***APP_BODY*******************************************************/
+    .app__body .card__body{
+        display: block;
+    }
+    .app__body .cta-link{
+        display: flex;
+    }
+    .cta-link a{
+        padding-left:15px;
+    }
+    .cta-link li:last-child{
+        padding-right: 15px;
+    }
+}
+
+
+/***************XL - DESKTOP**************************************/
+@media screen and (min-width: 1200px){
+
+
+/***LAYOUT********************************************************/
+    #app{
+        padding: 32px 0;
+    } 
+    .container{
+        width: 75%;
+        margin: 0 auto;
+    }
+
+/***COMPONENTS*****************************************************/
+    .cta-link{
+        display: flex;
+    }
+    .card__body{
+        display: block;
+    }
+    .box{
+        max-width: 350px;
+    }
+
+/***ASIDE*********************************************************/
+    .sidebar{
+        width: 370px;
+        background-color: #FAFAFA;
+    }
+    .sidebar .headbar{
+        justify-content: space-between;
+        flex-shrink: 0;
+        padding-left: 15px;
+    }
+    .sidebar__notification{
+        background-color:#8EDAFC ;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        gap: 18px;
+        flex-shrink: 0;
+    }
+    .notification__text p{
+        font-size: 14px;
+    }
+    .notification__text a {
+       font-size: 12px;
+       text-decoration: underline;
+       color: #5B7384;
+    }
+    .btn{
+        display: block;
+        background-color: white;
+        color:#8EDAFC ;
+        height: 56px;
+        width: 56px;
+        text-align: center;
+        font-size: 28px;
+        line-height: 56px;
+        border-radius: 50%;  
+    }
+    .sidebar__search{
+        display:block;
+        padding: 8px;
+        flex-shrink: 0;
+    }
+    .searchbox{
+        background-color: white;
+        width:340px;
+        color:#757575;
+        padding: 8px;
+        font-size: 12px;
+    }
+    .searchbox i{
+        padding-right: 15px;
+    }
+    #search{
+        width:280px ;
+        border: none;
+        line-height: 18px;
+        outline: none;
+    }
+    .contacts{
+        display: flex;
+        justify-content: space-between;
+    }
+     .contacts > p{
+        display: block;
+        font-size: 12px;
+        color:#B7B9BB ;
+        padding: 20px;
+    }
+    .card__body p{
+        font-size: 14px;
+        color: #B7B9BB ;
+    }
+}

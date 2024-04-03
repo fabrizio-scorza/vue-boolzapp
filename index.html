@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boolzapp</title>
+        <link rel="stylesheet" href="./css/app.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c621ff4416.js" crossorigin="anonymous"></script>
+    </head>
+
+
+    <body>
+        <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+        
+        <div id="app">
+            <!-- webapp -->
+            <div class="container">
+                <!-- contenitore centrale desktop fullscreen tablet e smartphone -->
+                <div class="flex h100">
+                    <!-- riga con i due elementi la sidebar e il corpo dell'app -->
+                    <aside class="sidebar column h100">
+                        <!-- sidebar con 4 elementi headbar notifiche ricerca e chat -->
+                        <div class="headbar">
+                            <div class="card__head">
+                                <!-- headbar con immagine profilo e bottoni con varie funzioni -->
+                                <img src="./css/img/avatar_io.jpg" alt="">
+                            </div>
+                                <menu class="cta-link">
+                                <!-- link calltoaction -->
+                                <li>
+                                    <a href="">
+                                        <i class="fa-solid fa-circle-notch"></i>
+                                    </a>
+                                </li>
+                                <li>                                    
+                                    <a href="">
+                                        <i class="fa-solid fa-message"></i>
+                                    </a>
+                                </li>
+                                <li>                                                       
+                                    <a href="">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </a>
+                                </li>
+                            </menu>
+                        </div>
+                        <div class="sidebar__notification">
+                            <!-- notifiche con icona e attiva notifiche  -->
+                            <div class="btn">
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </div>
+                            <div class="notification__text">
+                                <p class="bold">Ricevi notifiche di nuovi messaggi</p>
+                                <a class="text-gray" href="">Attiva notifiche desktop</a>
+                            </div>
+                        </div>
+                        <div class="sidebar__search">
+                            <!-- barra di ricerca momentaneamente p per inserire l'icona -->
+                            <div class="searchbox"> 
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                            </div>   
+                        </div>
+                        <div class="sidebar__chats scroll">
+                            <!-- lista contatti con immagine e nome -->
+                            <ul>
+                                <li class="contacts">
+                                    <div class="card">
+                                        <!-- contatto Michele -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_1.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Michele</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>16:15</p>
+                                </li>
+                                <li class="contacts">                                    
+                                    <div class="card">
+                                        <!-- contatto Fabio -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_2.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Fabio</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>16:05</p>                                    
+                                </li>
+                                <li class="contacts">                                   
+                                    <div class="card">
+                                        <!-- contatto Samuele -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_3.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Samuele</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>16:03</p>
+                                </li>
+                                <li class="contacts">
+                                    <div class="card">
+                                        <!-- contatto Alessandro B. -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_4.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Alessandro B.</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>15:50</p>
+                                </li>
+                                <li class="contacts">                                  
+                                    <div class="card">
+                                        <!-- contatto Alessandro L. -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_5.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Alessandro L.</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>15:45</p>            
+                                </li>
+                                <li class="contacts">                               
+                                    <div class="card">
+                                        <!-- contatto Claudia -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_6.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Claudia</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>15:40</p>                                    
+                                </li>
+                                <li class="contacts">
+                                    <div class="card">
+                                        <!-- contatto Federico -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_7.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Federico</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>15:22</p>
+                                </li>
+                                <li class="contacts">
+                                    <div class="card">
+                                        <!-- contatto Davide -->
+                                        <div class="card__head">
+                                            <img src="./css/img/avatar_8.jpg" alt="">
+                                        </div>
+                                        <div class="card__body">
+                                            <strong>Davide</strong>
+                                            <p>Lorem ipsum dolor sit amet.</p>
+                                        </div>                                        
+                                    </div>
+                                    <p>15:15</p>
+                                </li class="contacts">
+                            </ul>
+                        </div>
+                    </aside>
+                    <main class="app__body flex column h100">
+                        <!-- corpo centrale dell'app -->
+                        <div class="headbar">
+                            <!-- intestazione chat aperta con immagine e nome -->
+                            <div class="card">
+                                <div class="card__head">
+                                    <img src="./css/img/avatar_1.jpg" alt="">
+                                </div>
+                                <div class="card__body">
+                                    <strong>Michele</strong>
+                                    <p>Ultimo accesso oggi alle 16.26</p>
+                                </div>  
+                            </div> 
+                            <menu class="cta-link">
+                                <!-- link calltoaction -->
+                                <li>
+                                    <a href="">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                </li>
+                                <li>                                    
+                                    <a href="">
+                                        <i class="fa-solid fa-paperclip"></i>
+                                    </a>
+                                </li>
+                                <li>                                                       
+                                    <a href="">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </a>
+                                </li>
+                            </menu>
+                        </div>
+                        <div class="body__text-area flex column scroll">
+                            <div class="send box flex">
+                                <p class="box__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deleniti consequatur ipsam, sint eum dolores at reprehenderit magnam mollitia maiores sequi blanditiis et animi?</p>
+                                <div class="cta-box flex column">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <time>16:13</time>
+                                </div>
+                            </div>
+                            <div class="send box flex">
+                                <p class="box__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <div class="cta-box flex column">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <time>16:13</time>
+                                </div>
+                            </div>
+                            <div class="send box flex">
+                                <p class="box__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit?</p>
+                                <div class="cta-box flex column">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <time>16:13</time>
+                                </div>
+                            </div>
+                            <div class="recive box flex">                            
+                                <p class="box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit reiciendis ipsum corporis, labore unde iste?</p>
+                                <div class="cta-box flex column">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <time>16:15</time>
+                                </div>
+                            </div>
+                            <div class="recive box flex">                            
+                                <p class="box__text">Lorem ipsum dolor sit amet consectetur?</p>
+                                <div class="cta-box flex column">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <time>16:15</time>
+                                </div>
+                            </div>
+                            <div class="send box flex">
+                                <p class="box__text"> Lorem ipsum dolor!!</p>
+                                <div class="cta-box flex column">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <time>16:16</time>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body__send-area flex">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <textarea name="message" id="txt" rows="2"></textarea>
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <script src="./js/app.js"></script>
+    </body>
+</html>
