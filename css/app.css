@@ -50,11 +50,11 @@ body{
     flex-grow: 1;
     padding:70px 10%;
 }
-.send{
+.sent{
     background-color:#def8c0;
     align-self: flex-end;
 }
-.recive{
+.received{
     background-color: white;
 }
 .cta-box{
@@ -64,10 +64,10 @@ body{
     padding-right: 10px;
     padding-bottom: 2px;
 }
-.send + .send, .recive + .recive{
+.sent + .sent, .received + .received{
     margin-top:10px;
 }
-.send + .recive, .recive + .send{
+.sent + .received, .received + .sent{
     margin-top:25px;
 }
 .box__text{

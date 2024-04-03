@@ -15,7 +15,7 @@
 
     <body>
         <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
-        
+
         <div id="app">
             <!-- webapp -->
             <div class="container">
@@ -68,110 +68,19 @@
                         <div class="sidebar__chats scroll">
                             <!-- lista contatti con immagine e nome -->
                             <ul>
-                                <li class="contacts">
-                                    <div class="card">
+                                <li class="contacts" v-for = "(contact,i) in contacts">
+                                    <div class="card" @click="setIndex(i)">
                                         <!-- contatto Michele -->
                                         <div class="card__head">
-                                            <img src="./css/img/avatar_1.jpg" alt="">
+                                            <img :src ="contact.avatar" alt="">
                                         </div>
                                         <div class="card__body">
-                                            <strong>Michele</strong>
+                                            <strong>{{ contact.name }}</strong>
                                             <p>Lorem ipsum dolor sit amet.</p>
                                         </div>                                        
                                     </div>
                                     <p>16:15</p>
                                 </li>
-                                <li class="contacts">                                    
-                                    <div class="card">
-                                        <!-- contatto Fabio -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_2.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Fabio</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>16:05</p>                                    
-                                </li>
-                                <li class="contacts">                                   
-                                    <div class="card">
-                                        <!-- contatto Samuele -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_3.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Samuele</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>16:03</p>
-                                </li>
-                                <li class="contacts">
-                                    <div class="card">
-                                        <!-- contatto Alessandro B. -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_4.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Alessandro B.</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>15:50</p>
-                                </li>
-                                <li class="contacts">                                  
-                                    <div class="card">
-                                        <!-- contatto Alessandro L. -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_5.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Alessandro L.</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>15:45</p>            
-                                </li>
-                                <li class="contacts">                               
-                                    <div class="card">
-                                        <!-- contatto Claudia -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_6.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Claudia</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>15:40</p>                                    
-                                </li>
-                                <li class="contacts">
-                                    <div class="card">
-                                        <!-- contatto Federico -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_7.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Federico</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>15:22</p>
-                                </li>
-                                <li class="contacts">
-                                    <div class="card">
-                                        <!-- contatto Davide -->
-                                        <div class="card__head">
-                                            <img src="./css/img/avatar_8.jpg" alt="">
-                                        </div>
-                                        <div class="card__body">
-                                            <strong>Davide</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>15:15</p>
-                                </li class="contacts">
                             </ul>
                         </div>
                     </aside>
@@ -181,10 +90,10 @@
                             <!-- intestazione chat aperta con immagine e nome -->
                             <div class="card">
                                 <div class="card__head">
-                                    <img src="./css/img/avatar_1.jpg" alt="">
+                                    <img :src="contacts[currentContactIndex].avatar" alt="">
                                 </div>
                                 <div class="card__body">
-                                    <strong>Michele</strong>
+                                    <strong>{{contacts[currentContactIndex].name}}</strong>
                                     <p>Ultimo accesso oggi alle 16.26</p>
                                 </div>  
                             </div> 
@@ -208,46 +117,11 @@
                             </menu>
                         </div>
                         <div class="body__text-area flex column scroll">
-                            <div class="send box flex">
-                                <p class="box__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deleniti consequatur ipsam, sint eum dolores at reprehenderit magnam mollitia maiores sequi blanditiis et animi?</p>
+                            <div :class="message.status" class="box flex" v-for:= "message in contacts[currentContactIndex].messages" >
+                                <p class="box__text"> {{ message.message }}</p>
                                 <div class="cta-box flex column">
                                     <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:13</time>
-                                </div>
-                            </div>
-                            <div class="send box flex">
-                                <p class="box__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <div class="cta-box flex column">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:13</time>
-                                </div>
-                            </div>
-                            <div class="send box flex">
-                                <p class="box__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit?</p>
-                                <div class="cta-box flex column">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:13</time>
-                                </div>
-                            </div>
-                            <div class="recive box flex">                            
-                                <p class="box__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit reiciendis ipsum corporis, labore unde iste?</p>
-                                <div class="cta-box flex column">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:15</time>
-                                </div>
-                            </div>
-                            <div class="recive box flex">                            
-                                <p class="box__text">Lorem ipsum dolor sit amet consectetur?</p>
-                                <div class="cta-box flex column">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:15</time>
-                                </div>
-                            </div>
-                            <div class="send box flex">
-                                <p class="box__text"> Lorem ipsum dolor!!</p>
-                                <div class="cta-box flex column">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:16</time>
+                                    <time>16:13</time>                                
                                 </div>
                             </div>
                         </div>
