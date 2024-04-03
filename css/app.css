@@ -179,8 +179,12 @@ body{
         flex-grow: 1;
         background-color: white;
     }
-    .card{
+    .sidebar__chats .card{
+        justify-content: center;
         border-bottom: 1px solid #F5F5F5;
+    }
+    .sidebar__chats .card__head img{
+        width: 45px;
     }
     .card__body, .contacts > p{
         display: none;

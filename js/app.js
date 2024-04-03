@@ -173,7 +173,6 @@ createApp({
     methods:{
         setIndex(index) {
             this.currentContactIndex = index;
-            console.log(index, currentContactIndex)
         }
     }
 }).mount('#app')
