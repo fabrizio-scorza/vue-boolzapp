@@ -4,7 +4,7 @@ const {createApp} = Vue
 createApp({
     data(){
         return{
-            contacts : [
+            contacts: [
                 {
                     name: 'Michele',
                     avatar: './css/img/avatar_1.jpg',
@@ -168,11 +168,38 @@ createApp({
                 }
             ],
             currentContactIndex: 0,
+            newMessage: '',
         }
     },
-    methods:{
+    methods: {
         setIndex(index) {
             this.currentContactIndex = index;
+        },
+        sendMessage(){
+            this.contacts[this.currentContactIndex].messages.push({
+                date: luxon.DateTime.now().toFormat("dd/LL/yyyy hh:mm:ss"),
+                message: this.newMessage,
+                status: 'sent'
+            })
+            this.newMessage ='';
+            this.reply();
+        },
+        reply(){
+            setTimeout(()=>{
+                this.contacts[this.currentContactIndex].messages.push({
+                    date: luxon.DateTime.now().toFormat("dd/LL/yyyy hh:mm:ss"),
+                    message: 'Ok!',
+                    status: 'received'
+                })
+            },1000)            
+        }
+    },
+    computed: {
+        currentContact(){
+            return this.contacts[this.currentContactIndex]
+        },
+        currentChat(){
+            return this.currentContact.messages
         }
     }
 }).mount('#app')

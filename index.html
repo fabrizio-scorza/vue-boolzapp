@@ -15,6 +15,7 @@
 
     <body>
         <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
 
         <div id="app">
             <!-- webapp -->
@@ -68,7 +69,7 @@
                         <div class="sidebar__chats scroll">
                             <!-- lista contatti con immagine e nome -->
                             <ul>
-                                <li class="contacts" v-for = "(contact,i) in contacts">
+                                <li v-for = "(contact,i) in contacts" :class="i === currentContactIndex ? 'active' : '' " class="contacts">
                                     <div class="card" @click="setIndex(i)">
                                         <!-- contatto Michele -->
                                         <div class="card__head">
@@ -90,10 +91,10 @@
                             <!-- intestazione chat aperta con immagine e nome -->
                             <div class="card">
                                 <div class="card__head">
-                                    <img :src="contacts[currentContactIndex].avatar" alt="">
+                                    <img :src="currentContact.avatar" alt="">
                                 </div>
                                 <div class="card__body">
-                                    <strong>{{contacts[currentContactIndex].name}}</strong>
+                                    <strong>{{currentContact.name}}</strong>
                                     <p>Ultimo accesso oggi alle 16.26</p>
                                 </div>  
                             </div> 
@@ -117,17 +118,17 @@
                             </menu>
                         </div>
                         <div class="body__text-area flex column scroll">
-                            <div :class="message.status" class="box flex" v-for:= "message in contacts[currentContactIndex].messages" >
-                                <p class="box__text"> {{ message.message }}</p>
+                            <div v-for:= "currentMessage in currentChat" :class="currentMessage.status" class="box flex" >
+                                <p class="box__text"> {{ currentMessage.message }}</p>
                                 <div class="cta-box flex column">
                                     <i class="fa-solid fa-chevron-down"></i>
-                                    <time>16:13</time>                                
+                                    <time>{{currentMessage.date.slice(11,16)}}</time>                                
                                 </div>
                             </div>
                         </div>
                         <div class="body__send-area flex">
                             <i class="fa-regular fa-face-smile"></i>
-                            <textarea name="message" id="txt" rows="2"></textarea>
+                            <textarea @keyup.enter="sendMessage" v-model="newMessage" name="message" id="txt" rows="2"></textarea>
                             <i class="fa-solid fa-microphone"></i>
                         </div>
                     </main>
