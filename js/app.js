@@ -181,7 +181,7 @@ createApp({
         },
         sendMessage(){
             this.contacts[this.currentContactIndex].messages.push({
-                date: luxon.DateTime.now().toFormat("dd/LL/yyyy hh:mm:ss"),
+                date: luxon.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss"),
                 message: this.newMessage,
                 status: 'sent'
             })
@@ -191,7 +191,7 @@ createApp({
         reply(){
             setTimeout(()=>{
                 this.contacts[this.currentContactIndex].messages.push({
-                    date: luxon.DateTime.now().toFormat("dd/LL/yyyy hh:mm:ss"),
+                    date: luxon.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss"),
                     message: 'Ok!',
                     status: 'received'
                 })
@@ -202,19 +202,27 @@ createApp({
                 const found = contact.name.toLowerCase().includes(this.searchText.toLowerCase());
                 if (!found){
                     this.contacts[i].visible = false 
+                } else{
+                    this.contacts[i].visible = true
                 }               
             })
         },
-        resetSearch(){
-            this.contacts.forEach((contact, i) =>{
-                const found = contact.name.toLowerCase().includes(this.searchText.toLowerCase());
-                if (!found){
-                    this.contacts[i].visible = false 
-                } else{
-                    this.contacts[i].visible = true
-                }             
+        lastMessageRecived(chat){
+            const receivedMessages =[{}];
+
+            chat.map((messages) =>{
+                if (messages.status === 'received'){
+                    receivedMessages.push({
+                        date: messages.date,
+                        message: messages.message
+                    })
+                }    
             })
-        }
+
+            const indexOfLastRecived = receivedMessages.length -1;
+            return receivedMessages[indexOfLastRecived];
+            
+        },
     },
     computed: {
         currentContact(){

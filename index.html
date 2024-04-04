@@ -63,7 +63,7 @@
                             <!-- barra di ricerca momentaneamente p per inserire l'icona -->
                             <div class="searchbox"> 
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input @keyup="searchThisText" @keyup.Backspace="resetSearch" v-model="searchText" type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                                <input @keyup="searchThisText"  v-model="searchText" type="text" id="search" placeholder="Cerca o inizia una nuova chat">
                             </div>   
                         </div>
                         <div class="sidebar__chats scroll">
@@ -78,10 +78,10 @@
                                             </div>
                                             <div class="card__body">
                                                 <strong>{{ contact.name }}</strong>
-                                                <p class="last-message">Lorem ipsum dolor sit amet.</p>
+                                                <p class="last-message">{{lastMessageRecived(contact.messages).message}}</p>
                                             </div>                                        
                                         </div>
-                                        <p class="time">16:15</p>                                        
+                                        <p class="time">{{lastMessageRecived(contact.messages).date.slice(11,16)}}</p>                                        
                                     </div>                                    
                                 </li>
                             </ul>
