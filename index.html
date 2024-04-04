@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="card__body">
                                     <strong>{{currentContact.name}}</strong>
-                                    <p>Ultimo accesso oggi alle 16.26</p>
+                                    <p>Ultimo accesso oggi alle {{lastMessageRecived(currentContact.messages).date.slice(11,16)}}</p>
                                 </div>  
                             </div> 
                             <menu class="cta-link">
