@@ -189,12 +189,13 @@ body{
     }
     .sidebar__chats .card{
         justify-content: center;
+        align-items: center;
         border-bottom: 1px solid #F5F5F5;
     }
     .sidebar__chats .card__head img{
         width: 45px;
     }
-    .card__body, .contacts > p{
+    .card__body, .last-message, .time{
         display: none;
     }
 
@@ -298,17 +299,23 @@ body{
         line-height: 18px;
         outline: none;
     }
-    .contacts{
-        display: flex;
-        justify-content: space-between;
+    .sidebar__chats .card{
+        justify-content:flex-start;
     }
-     .contacts > p{
+    .contacts{
+        position:relative;
+    }
+     .time{
+        position: absolute;
+        right: 0;
+        top: 0;
         display: block;
         font-size: 12px;
         color:#B7B9BB ;
         padding: 20px;
     }
-    .card__body p{
+    .last-message{
+        display: block;
         font-size: 14px;
         color: #B7B9BB ;
     }

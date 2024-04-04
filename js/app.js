@@ -169,11 +169,15 @@ createApp({
             ],
             currentContactIndex: 0,
             newMessage: '',
+            searchText: '',
         }
     },
     methods: {
-        setIndex(index) {
+        setIndex(index){
             this.currentContactIndex = index;
+        },
+        setActive(index){
+            return index === this.currentContactIndex ? 'active' : '' 
         },
         sendMessage(){
             this.contacts[this.currentContactIndex].messages.push({
@@ -192,6 +196,24 @@ createApp({
                     status: 'received'
                 })
             },1000)            
+        },
+        searchThisText(){
+            this.contacts.forEach((contact, i) =>{
+                const found = contact.name.toLowerCase().includes(this.searchText.toLowerCase());
+                if (!found){
+                    this.contacts[i].visible = false 
+                }               
+            })
+        },
+        resetSearch(){
+            this.contacts.forEach((contact, i) =>{
+                const found = contact.name.toLowerCase().includes(this.searchText.toLowerCase());
+                if (!found){
+                    this.contacts[i].visible = false 
+                } else{
+                    this.contacts[i].visible = true
+                }             
+            })
         }
     },
     computed: {

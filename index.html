@@ -63,24 +63,26 @@
                             <!-- barra di ricerca momentaneamente p per inserire l'icona -->
                             <div class="searchbox"> 
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                                <input @keyup="searchThisText" @keyup.Backspace="resetSearch" v-model="searchText" type="text" id="search" placeholder="Cerca o inizia una nuova chat">
                             </div>   
                         </div>
                         <div class="sidebar__chats scroll">
                             <!-- lista contatti con immagine e nome -->
                             <ul>
-                                <li v-for = "(contact,i) in contacts" :class="i === currentContactIndex ? 'active' : '' " class="contacts">
-                                    <div class="card" @click="setIndex(i)">
-                                        <!-- contatto Michele -->
-                                        <div class="card__head">
-                                            <img :src ="contact.avatar" alt="">
+                                <li v-for= "(contact,i) in contacts" :class="setActive(i)" class="contacts">
+                                    <div v-if= "contacts[i].visible === true">
+                                        <div class="card" @click="setIndex(i)">
+                                            <!-- contatto Michele -->
+                                            <div class="card__head">
+                                                <img :src ="contact.avatar" alt="">
+                                            </div>
+                                            <div class="card__body">
+                                                <strong>{{ contact.name }}</strong>
+                                                <p class="last-message">Lorem ipsum dolor sit amet.</p>
+                                            </div>                                        
                                         </div>
-                                        <div class="card__body">
-                                            <strong>{{ contact.name }}</strong>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>                                        
-                                    </div>
-                                    <p>16:15</p>
+                                        <p class="time">16:15</p>                                        
+                                    </div>                                    
                                 </li>
                             </ul>
                         </div>
