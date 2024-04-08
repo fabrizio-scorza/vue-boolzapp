@@ -63,7 +63,7 @@
                             <!-- barra di ricerca momentaneamente p per inserire l'icona -->
                             <div class="searchbox"> 
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input @keyup="searchThisText"  v-model="searchText" type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                                <input @keyup="searchThisText"  v-model.trim="searchText" type="text" id="search" placeholder="Cerca o inizia una nuova chat">
                             </div>   
                         </div>
                         <div class="sidebar__chats scroll">

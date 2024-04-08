@@ -173,14 +173,17 @@ createApp({
         }
     },
     methods: {
+        //metodo che setta l'indice corrente della conversazione
         setIndex(index){
             this.currentContactIndex = index;
         },
+        // metodo che tramite l'indice corrente attiva una classe su html
         setActive(index){
             return index === this.currentContactIndex ? 'active' : '' 
         },
+        // metodo per inviare messaggi tramite la text area e li pusha nella chat corrente
         sendMessage(){
-            this.contacts[this.currentContactIndex].messages.push({
+            this.currentChat.push({
                 date: luxon.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss"),
                 message: this.newMessage,
                 status: 'sent'
@@ -188,9 +191,11 @@ createApp({
             this.newMessage ='';
             this.reply();
         },
+        // metodo che invoca la risposta a tempo
         reply(){
+            const replyChat = this.currentChat;
             setTimeout(()=>{
-                this.contacts[this.currentContactIndex].messages.push({
+                replyChat.push({
                     date: luxon.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss"),
                     message: 'Ok!',
                     status: 'received'
